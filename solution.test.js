@@ -33,6 +33,18 @@ function solution(input) {
         output.push(numbers[1] + numbers[0], numbers[0] + numbers[1]);
         return output.join(',');
     }
+
+    if(numbers.length === 3){
+        output.push(
+            numbers[2] + numbers[1] + numbers[0], 
+            numbers[2] + numbers[0] + numbers[1], 
+            numbers[1] + numbers[2] + numbers[0], 
+            numbers[1] + numbers[0] + numbers[2],
+            numbers[0] + numbers[2] + numbers[1],
+            numbers[0] + numbers[1] + numbers[2]
+            );
+        return output.join(',');
+    }
     
 }
 
@@ -57,7 +69,7 @@ describe('solution function', () => {
         const value = solution('1A2');
         expect(value).toBe('21,12');
     })
-    xtest('it returns all the options for 3 numbers', () => {
+    test('it returns all the options for 3 numbers', () => {
         const value = solution('326');
         expect(value).toBe('632,623,362,326,263,236')
     })
