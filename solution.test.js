@@ -1,4 +1,7 @@
 function solution(input) {
+    if (!input) {
+        return "Please provide an input to continue";
+    }
     // the numbers from the input
     let numbers = [];
     let output = [];
@@ -59,6 +62,10 @@ describe('solution function', () => {
     test('it returns all the options for 3 numbers', () => {
         const value = solution('326');
         expect(value).toBe('632,623,362,326,263,236')
+    })
+    test('it returns a message if the input is blank', () => {
+        const value = solution();
+        expect(value).toBe("Please provide an input to continue")
     })
     
 })
