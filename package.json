@@ -1,0 +1,27 @@
+{
+  "name": "andPractice",
+  "version": "1.0.0",
+  "description": "## Exercise Two non-negative integers are called Siblings if they can be obtained by each other by rearranging the digits of their decimal representations. Write the function: function solution (input) {   // logic here   return null;  } that, given any String input, returns all the distinct Siblings that can be formed by the positive integers that can be found on it in descending order. Please keep in mind the efficiency of your algorithm when writing the solution.",
+  "main": "solution.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indisaurusrex/andPractice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indisaurusrex/andPractice/issues"
+  },
+  "homepage": "https://github.com/indisaurusrex/andPractice#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.9.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "esm": "^3.2.25",
+    "jest": "^26.6.1"
+  }
+}
