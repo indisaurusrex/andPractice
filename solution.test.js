@@ -25,6 +25,8 @@ function solution(input) {
     if(numbers.length === 1){
         return numbers.join(); 
     }
+
+    numbers.sort((a, b) => a - b);
     
     // if there are 2 numbers
     if(numbers.length === 2){
@@ -43,8 +45,12 @@ describe('solution function', () => {
         const value = solution('a');
         expect(value).toBe('There were no numbers in the input');
     })
-    test("it returns both options for 2 number input", () => {
+    test("it returns both options for 2 number input, in the right order if they're provided ascending", () => {
         const value = solution('12');
+        expect(value).toBe('21,12');
+    })
+    test("it returns both options for 2 number input, in the right order if they're provided descending", () => {
+        const value = solution('21');
         expect(value).toBe('21,12');
     })
     test("it returns both options for 2 number input with added letter", () => {
