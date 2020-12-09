@@ -2,12 +2,6 @@ function solution(input) {
     // the numbers from the input
     let numbers = [];
     let output = [];
-    // options to sort are:
-            // find the biggest number in the input and add it in at the appropriate space
-            // get all the answers in an array and sort decending in the end
-            // loop through the numnbers to add them together from the orig, 
-
-    // all elements from the input split into characters
     let inputChecker = input.split('');
 
     inputChecker.forEach(element => {
@@ -17,35 +11,28 @@ function solution(input) {
         }
     });
 
-    // if there weren't any numbers, return a message
-    if(numbers.length === 0){
-        return "There were no numbers in the input";
-    } 
-
-    if(numbers.length === 1){
-        return numbers.join(); 
-    }
-
     numbers.sort((a, b) => a - b);
-    
-    // if there are 2 numbers
-    if(numbers.length === 2){
-        output.push(numbers[1] + numbers[0], numbers[0] + numbers[1]);
-        return output.join(',');
+
+    switch(numbers.length){
+        case 0:
+            return "There were no numbers in the input";
+        case 1:
+            return numbers.join();
+        case 2:
+            output.push(numbers[1] + numbers[0], numbers[0] + numbers[1]);
+            return output.join(',');
+        case 3:
+            output.push(
+                numbers[2] + numbers[1] + numbers[0],
+                numbers[2] + numbers[0] + numbers[1],
+                numbers[1] + numbers[2] + numbers[0],
+                numbers[1] + numbers[0] + numbers[2],
+                numbers[0] + numbers[2] + numbers[1],
+                numbers[0] + numbers[1] + numbers[2]
+            );
+            return output.join(',');
     }
 
-    if(numbers.length === 3){
-        output.push(
-            numbers[2] + numbers[1] + numbers[0], 
-            numbers[2] + numbers[0] + numbers[1], 
-            numbers[1] + numbers[2] + numbers[0], 
-            numbers[1] + numbers[0] + numbers[2],
-            numbers[0] + numbers[2] + numbers[1],
-            numbers[0] + numbers[1] + numbers[2]
-            );
-        return output.join(',');
-    }
-    
 }
 
 describe('solution function', () => {
