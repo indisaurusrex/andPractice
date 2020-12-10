@@ -11,7 +11,7 @@ function solution(input) {
         }
     });
 
-    if (!numbersToUse || numbersToUse.length < 2) {
+    if (numbersToUse.length < 2) {
         return "I couldn't find any AND-Siblings this time"
     }
 
