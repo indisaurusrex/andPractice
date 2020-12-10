@@ -17,6 +17,10 @@ describe('solution function', () => {
         const value = solution('112');
         expect(value).toBe('21,12');
     })
+    test("it does not take notice of negative integers", () => {
+        const value = solution('1 -4 A5');
+        expect(value).toBe('51,15');
+    })
     test('it returns all the options for 3 numbers', () => {
         const value = solution('326');
         expect(value).toBe('632,623,362,326,263,236')
@@ -33,8 +37,8 @@ describe('solution function', () => {
         const value = solution('1');
         expect(value).toBe("I couldn't find any AND-Siblings this time");
     })
-    test("it should not add a letter to the array", () => {
+    test("if there are no numbers in string, a message is returned", () => {
         const value = solution('a');
-        expect(value).toBe("I couldn't find any AND-Siblings this time");
+        expect(value).toBe("I didn't find any positive integers in this string");
     })
 })

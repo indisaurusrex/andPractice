@@ -1,6 +1,7 @@
 export function solution(input) {
     let integers = '';
     let siblingsList = [];
+    let reg = /(?<![-\d])\d+/g;
     const findAllSiblings = (integers, siblings = '') => {
         if (!integers) {
             siblingsList.push(siblings);
@@ -13,12 +14,16 @@ export function solution(input) {
         }
     };
 
-    if (typeof input === "string") {
-        input.split('').forEach(element => {
+    if (typeof input === "string" && reg.test(input)) {
+        let positiveIntegers = (input.match(reg)).join('');
+        
+        positiveIntegers.split('').forEach(element => {
             if (Number(element) && !integers.includes(element)) {
                 integers += element;
             }
         });
+    } else if (typeof input === "string" && !reg.test(input)) {
+        return "I didn't find any positive integers in this string"
     } else {
         return "Please provide a string to be analysed";
     }
