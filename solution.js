@@ -15,11 +15,7 @@ export function solution(input) {
     };
 
     if (typeof input === "string" && reg.test(input)) {
-        let positiveIntegers = (input.match(reg)).join('');
-        
-        positiveIntegers.split('').forEach(element => { 
-            integers += element;
-        });
+        integers = (input.match(reg)).join('')
     } else if (typeof input === "string" && !reg.test(input)) {
         return "I didn't find any positive integers in this string"
     } else {
