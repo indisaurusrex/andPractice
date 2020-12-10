@@ -14,12 +14,12 @@ export function solution(input) {
         }
     };
 
-    if (typeof input === "string" && reg.test(input)) {
-        integers = (input.match(reg)).join('')
-    } else if (typeof input === "string" && !reg.test(input)) {
+    if (typeof input !== "string") {
+        return "Please provide a string to be analysed"
+    } else if (!reg.test(input)) {
         return "I didn't find any positive integers in this string"
     } else {
-        return "Please provide a string to be analysed";
+        integers = (input.match(reg)).join('')
     }
 
     if (integers.length < 2) return "I couldn't find any AND-Siblings this time"
