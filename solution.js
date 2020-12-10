@@ -22,9 +22,7 @@ export function solution(input) {
         return "Please provide a string to be analysed";
     }
 
-    if (integers.length < 2) {
-        return "I couldn't find any AND-Siblings this time"
-    }
+    if (integers.length < 2) return "I couldn't find any AND-Siblings this time"
 
     findAllSiblings(integers);
 
