@@ -29,9 +29,7 @@ Happy coding :)
 
 * function needs input to be a string
 * find non-negative integers, ignoring other characters/spaces
-* integers in AND-Siblings are distinct
 * AND-Siblings are 2+ numbers
-* AND-Siblings to be returned in descending order
 * return a message if there are no integers
-* otherwise return string of AND-Siblings separated by comma
+* otherwise return string of distinct AND-Siblings in descending order separated by commas
 
