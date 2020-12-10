@@ -18,9 +18,7 @@ export function solution(input) {
         let positiveIntegers = (input.match(reg)).join('');
         
         positiveIntegers.split('').forEach(element => {
-            if (Number(element) && !integers.includes(element)) {
-                integers += element;
-            }
+            if (!integers.includes(element)) integers += element; 
         });
     } else if (typeof input === "string" && !reg.test(input)) {
         return "I didn't find any positive integers in this string"
