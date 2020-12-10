@@ -1,37 +1,34 @@
 function solution(input) {
-    if (!input || typeof input !== "string") {
+    let integers = '';
+    let siblingsList = [];
+
+    if (typeof input === "string"){
+        input.split('').forEach(element => {
+            if (Number(element) && !integers.includes(element)) {
+                integers += element;
+            }
+        });
+    } else {
         return "Please provide a string to be analysed";
     }
-
-    let numbersToUse = '';
     
-    input.split('').forEach(element => {
-        if (Number(element) && !numbersToUse.includes(element)) {
-            numbersToUse += element;
-        }
-    });
-
-    if (numbersToUse.length < 2) {
+    if (integers.length < 2) {
         return "I couldn't find any AND-Siblings this time"
     }
 
-    // add this into line 21
-    let siblingsList = [];
-
-    let findAllSiblings = (numbersToUse, siblings = '') => {
-        if(!numbersToUse) {
+    const findAllSiblings = (integers, siblings = '') => {
+        if(!integers) {
             siblingsList.push(siblings);
-            return
+            return;
         }
-        for (let i = 0; i < numbersToUse.length; i++) {
-            siblings += numbersToUse[i];
-            // pass in 19 here too
-            findAllSiblings(numbersToUse.slice(0, i) + numbersToUse.slice(i + 1), siblings);
+        for (let i = 0; i < integers.length; i++) {
+            siblings += integers[i];
+            findAllSiblings(integers.slice(0, i) + integers.slice(i + 1), siblings);
             siblings = siblings.slice(0, siblings.length - 1);
         }
     };
 
-    findAllSiblings(numbersToUse);
+    findAllSiblings(integers);
     
     return (siblingsList.sort((a, b) => b - a).join(','));
 
@@ -54,7 +51,6 @@ describe('solution function', () => {
         const value = solution('112');
         expect(value).toBe('21,12');
     })
-    
     test('it returns all the options for 3 numbers', () => {
         const value = solution('326');
         expect(value).toBe('632,623,362,326,263,236')
