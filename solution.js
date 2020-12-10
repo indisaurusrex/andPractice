@@ -1,17 +1,33 @@
-function solution(input) {
+export function solution(input) {
+    let integers = '';
+    let siblingsList = [];
+    const findAllSiblings = (integers, siblings = '') => {
+        if (!integers) {
+            siblingsList.push(siblings);
+            return;
+        }
+        for (let i = 0; i < integers.length; i++) {
+            siblings += integers[i];
+            findAllSiblings(integers.slice(0, i) + integers.slice(i + 1), siblings);
+            siblings = siblings.slice(0, siblings.length - 1);
+        }
+    };
 
-    // some example inputs
-    // console.log(solution('326')); // expected ouput 632,623,362,326,263,236
-    // console.log(solution('A 3B2 C6D')); // expected ouput 632,623,362,326,263,236
+    if (typeof input === "string") {
+        input.split('').forEach(element => {
+            if (Number(element) && !integers.includes(element)) {
+                integers += element;
+            }
+        });
+    } else {
+        return "Please provide a string to be analysed";
+    }
 
-    // logic here
+    if (integers.length < 2) {
+        return "I couldn't find any AND-Siblings this time"
+    }
 
-    return 1;
+    findAllSiblings(integers);
+
+    return (siblingsList.sort((a, b) => b - a).join(','));
 }
-
-describe('solution function', () => {
-    test("it should return the input if it is a single number", () => {
-        const value = solution(1);
-        expect(value).toBe(1);
-    })
-})
