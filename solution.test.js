@@ -6,7 +6,7 @@ function solution(input) {
     let numbersToUse = '';
     
     input.split('').forEach(element => {
-        if (Number(element)) {
+        if (Number(element) && !numbersToUse.includes(element)) {
             numbersToUse += element;
         }
     });
@@ -15,6 +15,7 @@ function solution(input) {
         return "I couldn't find any AND-Siblings this time"
     }
 
+    // add this into line 21
     let siblingsList = [];
 
     let findAllSiblings = (numbersToUse, siblings = '') => {
@@ -24,12 +25,14 @@ function solution(input) {
         }
         for (let i = 0; i < numbersToUse.length; i++) {
             siblings += numbersToUse[i];
+            // pass in 19 here too
             findAllSiblings(numbersToUse.slice(0, i) + numbersToUse.slice(i + 1), siblings);
             siblings = siblings.slice(0, siblings.length - 1);
         }
     };
 
     findAllSiblings(numbersToUse);
+    
     return (siblingsList.sort((a, b) => b - a).join(','));
 
 }
@@ -47,6 +50,11 @@ describe('solution function', () => {
         const value = solution('1A2');
         expect(value).toBe('21,12');
     })
+    test("it does not take notice of duplicate integers", () => {
+        const value = solution('112');
+        expect(value).toBe('21,12');
+    })
+    
     test('it returns all the options for 3 numbers', () => {
         const value = solution('326');
         expect(value).toBe('632,623,362,326,263,236')
