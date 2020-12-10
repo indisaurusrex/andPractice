@@ -41,5 +41,8 @@ Happy coding :)
 * I chose variable names and message wording that relate to the instructions provided.
 * The if statement on line 17 is structured to do the checks in order of processing required, so the check that needs the most processing will only be done if it is needed. 
 * All variables are declared at the top of the function before anything is processed, for ease of reading.
-* Tests are provided in a separate file (solution.test.js) and written in Jest. To run them please run `npm install` first. I did this using TDD and refactored from a switch statement to use recursion to make the function work for more than 3 integers. The tests are structured with exceptions last.
+* Tests were written in Jest and are in the file `solution.test.js`
+    * To run the tests, run `npm install --save-dev jest` then `npm test`
+    * I did this using TDD and refactored from a switch statement to use recursion to make the function work for more than 3 integers. 
+    * The tests are structured with exceptions last.
 * At first I thought the function should only take distinct non-negative integers into account but after a re-read I don't think that's the case. With that in mind I have written it so that if there are duplicate non-negative integers they are used in the AND-Siblings, but only distinct AND-Siblings are returned. I hope this is correct! 
