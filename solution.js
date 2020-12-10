@@ -3,7 +3,7 @@ export function solution(input) {
     let siblingsList = [];
     let reg = /(?<![-\d])\d+/g;
     const findAllSiblings = (integers, siblings = '') => {
-        if (!integers) {
+        if (!integers && !siblingsList.includes(siblings)) {
             siblingsList.push(siblings);
             return;
         }
@@ -17,8 +17,8 @@ export function solution(input) {
     if (typeof input === "string" && reg.test(input)) {
         let positiveIntegers = (input.match(reg)).join('');
         
-        positiveIntegers.split('').forEach(element => {
-            if (!integers.includes(element)) integers += element; 
+        positiveIntegers.split('').forEach(element => { 
+            integers += element;
         });
     } else if (typeof input === "string" && !reg.test(input)) {
         return "I didn't find any positive integers in this string"

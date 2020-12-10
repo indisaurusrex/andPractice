@@ -9,14 +9,12 @@ describe('solution function', () => {
         expect(solution('1A2')).toBe('21,12')
         expect(solution('1 2')).toBe('21,12')
     })
-    test("it ignores duplicate integers", () => {
-        expect(solution('112')).toBe('21,12')
-    })
     test("it ignores negative integers", () => {
         expect(solution('1 -4 A5')).toBe('51,15')
     })
     test("it returns all the options for 3 AND-Siblings", () => {
         expect(solution('326')).toBe('632,623,362,326,263,236')
+        expect(solution('112')).toBe('211,121,112')
     })
     test("it returns a message if no input is given", () => {
         expect(solution()).toBe("Please provide a string to be analysed")
